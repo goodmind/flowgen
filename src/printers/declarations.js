@@ -41,7 +41,10 @@ export const propertyDeclaration = (
 
   if (node.type) {
     let right = printers.node.printType(node.type);
-    if (node.questionToken && node.name.kind !== ts.SyntaxKind.ComputedPropertyName) {
+    if (
+      node.questionToken &&
+      node.name.kind !== ts.SyntaxKind.ComputedPropertyName
+    ) {
       left += "?";
     }
     if (
@@ -53,7 +56,7 @@ export const propertyDeclaration = (
     return left + ": " + right;
   }
 
-  return left + `: any // ${printers.node.printType(node.initializer)}`;
+  return left + `: ${printers.node.printExpressionAsType(node.initializer)}\n`;
 };
 
 export const variableDeclaration = (node: RawNode): string => {
@@ -219,7 +222,7 @@ export const enumDeclaration = (nodeName: string, node: RawNode): string => {
     let value;
     const name = `${nodeName}__${member.name.text}`;
     if (typeof member.initializer !== "undefined") {
-      value = printers.node.printType(member.initializer);
+      value = printers.node.printExpressionAsType(member.initializer);
     } else {
       value = index;
     }

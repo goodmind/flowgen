@@ -26,6 +26,7 @@ suppress_comment=\\(.\\|\n\\)*\\$todo
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(<VERSION>\\)?)\\)
 suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(<VERSION>\\)?)\\)?:? #[0-9]+
 suppress_type=$todo
+lazy_mode=ide
 
 module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/src/typings/css-modules.js'
 
